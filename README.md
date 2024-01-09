@@ -93,6 +93,3 @@ The decision to use a single-table or multiple-table design in DynamoDB can inde
 
 In summary, a single-table design can potentially offer simpler, more cost-effective scaling, while a multiple-table design can provide more granular control and better isolation. The choice between the two should be based on your specific use case, data access patterns, and scaling requirements.
 
-3. **Costs**: You're charged for the read and write capacity that you provision, not the actual usage. If your capacity is under-utilized, you may pay for more than you use. This model can be cost-effective if your application has predictable workloads, allowing you to plan capacity in advance.
-
-In both modes, DynamoDB maintains performance with high availability and data durability. The choice between the two depends on the specific needs of your application, such as predictability of traffic, cost considerations, and the need for automatic scaling.
