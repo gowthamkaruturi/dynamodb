@@ -67,7 +67,11 @@ In on-demand capacity mode, DynamoDB automatically scales to handle the workload
 
 In provisioned capacity mode, you specify the number of reads and writes per second that you expect your application to require.
 
-1. **Scaling**: You can manually adjust the provisioned capacity up or down, or enable auto-scaling, where DynamoDB will automatically adjust your capacity based on the specified utilization rate. However, this scaling is not instantaneous and has certain limitations on how often it can scale.''
+1. **Scaling**: You can manually adjust the provisioned capacity up or down, or enable auto-scaling, where DynamoDB will automatically adjust your capacity based on the specified utilization rate. However, this scaling is not instantaneous and has certain limitations on how often it can scale.
+
+2. **Costs**: You're charged for the read and write capacity that you provision, not the actual usage. If your capacity is under-utilized, you may pay for more than you use. This model can be cost-effective if your application has predictable workloads, allowing you to plan capacity in advance.
+
+In both modes, DynamoDB maintains performance with high availability and data durability. The choice between the two depends on the specific needs of your application, such as predictability of traffic, cost considerations, and the need for automatic scaling.
 
 The decision to use a single-table or multiple-table design in DynamoDB can indeed be influenced by scaling considerations. Here's how:
 
