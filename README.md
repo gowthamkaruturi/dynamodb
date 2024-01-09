@@ -52,3 +52,23 @@ However, single-table designs can be complex to implement and require a deep und
 However, multiple table designs can lead to higher costs if not managed properly and might require multiple requests to fetch related data, increasing latency.
 
 In conclusion, the choice between a single-table and multi-table design in DynamoDB should be based on your specific use case, the nature of your data, your comfort level with NoSQL design principles, and your cost-performance requirements.
+
+Amazon DynamoDB offers two read/write capacity modes for scaling: on-demand and provisioned.
+
+**On-Demand Capacity Mode:**
+
+In on-demand capacity mode, DynamoDB automatically scales to handle the workload of your application in response to actual traffic patterns. This means it can accommodate sudden increases in traffic without any intervention.
+
+1. **Scaling**: DynamoDB instantly scales up and down to adjust for changes in workload. It can handle thousands of requests per second without any capacity planning.
+
+2. **Costs**: You're charged for the reads and writes your application performs on your tables. There's no need to specify expected read and write capacity units. This model can be cost-effective if your application has unpredictable workloads, and is ideal for new applications with unknown workloads.
+
+**Provisioned Capacity Mode:**
+
+In provisioned capacity mode, you specify the number of reads and writes per second that you expect your application to require.
+
+1. **Scaling**: You can manually adjust the provisioned capacity up or down, or enable auto-scaling, where DynamoDB will automatically adjust your capacity based on the specified utilization rate. However, this scaling is not instantaneous and has certain limitations on how often it can scale.
+
+2. **Costs**: You're charged for the read and write capacity that you provision, not the actual usage. If your capacity is under-utilized, you may pay for more than you use. This model can be cost-effective if your application has predictable workloads, allowing you to plan capacity in advance.
+
+In both modes, DynamoDB maintains performance with high availability and data durability. The choice between the two depends on the specific needs of your application, such as predictability of traffic, cost considerations, and the need for automatic scaling.
