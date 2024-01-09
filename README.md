@@ -67,8 +67,28 @@ In on-demand capacity mode, DynamoDB automatically scales to handle the workload
 
 In provisioned capacity mode, you specify the number of reads and writes per second that you expect your application to require.
 
-1. **Scaling**: You can manually adjust the provisioned capacity up or down, or enable auto-scaling, where DynamoDB will automatically adjust your capacity based on the specified utilization rate. However, this scaling is not instantaneous and has certain limitations on how often it can scale.
+1. **Scaling**: You can manually adjust the provisioned capacity up or down, or enable auto-scaling, where DynamoDB will automatically adjust your capacity based on the specified utilization rate. However, this scaling is not instantaneous and has certain limitations on how often it can scale.''
 
-2. **Costs**: You're charged for the read and write capacity that you provision, not the actual usage. If your capacity is under-utilized, you may pay for more than you use. This model can be cost-effective if your application has predictable workloads, allowing you to plan capacity in advance.
+The decision to use a single-table or multiple-table design in DynamoDB can indeed be influenced by scaling considerations. Here's how:
+
+**Single-Table Design:**
+
+1. **Efficient Scaling**: In a single-table design, all data is stored in one table, which means that scaling operations are concentrated on that single table. This can make it easier to manage and optimize scaling.
+
+2. **Cost Optimization**: Since DynamoDB charges based on read and write capacity, you can potentially optimize costs by provisioning capacity for a single table, rather than multiple tables. This can be particularly beneficial in provisioned capacity mode.
+
+3. **Simplified Management**: A single-table design can simplify the management of scaling operations. You only need to monitor and adjust the capacity of one table, rather than multiple tables.
+
+**Multiple-Table Design:**
+
+1. **Distributed Load**: In a multiple-table design, the data load is distributed across several tables. This can help in scaling as each table can be scaled according to its specific requirements.
+
+2. **Granular Control**: With multiple tables, you have more granular control over scaling. You can scale each table independently based on its specific workload, which can be beneficial if different tables have different traffic patterns.
+
+3. **Isolation**: Multiple tables provide better isolation between different types of data. If a surge in traffic to one type of data occurs, it will not affect the performance of other data types.
+
+In summary, a single-table design can potentially offer simpler, more cost-effective scaling, while a multiple-table design can provide more granular control and better isolation. The choice between the two should be based on your specific use case, data access patterns, and scaling requirements.
+
+3. **Costs**: You're charged for the read and write capacity that you provision, not the actual usage. If your capacity is under-utilized, you may pay for more than you use. This model can be cost-effective if your application has predictable workloads, allowing you to plan capacity in advance.
 
 In both modes, DynamoDB maintains performance with high availability and data durability. The choice between the two depends on the specific needs of your application, such as predictability of traffic, cost considerations, and the need for automatic scaling.
